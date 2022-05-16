@@ -50,5 +50,8 @@ jobs:
 # Get the GKE credentials so we can deploy to the cluster
     - run: gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --zone ${{ env.GKE_ZONE }}
 
+    - name: Delete a Pod Test
+      run: kubectl delete pod spring-boot-docker
+
     - name: Deploy
       run: kubectl apply -f deployment.yaml
