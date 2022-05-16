@@ -25,9 +25,5 @@ jobs:
     - name: Building Docker Image
       run: docker build . --file Dockerfile --tag tironelorence/spring-boot-docker
     - name: Pushing Docker Image to Docker Hub
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        file: ./Dockerfile
-        push: true
+      run: docker push tironelorence/spring-boot-docker
 
