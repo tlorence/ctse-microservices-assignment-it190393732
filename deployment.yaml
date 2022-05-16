@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-docker
+  labels:
+    app: spring-boot-docker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-docker
+  template:
+    metadata:
+      labels:
+        app: spring-boot-docker
+    spec:
+      containers:
+      - name: spring-boot-docker
+          image: tironelorence/spring-boot-docker
+          ports:
+          - containerPort: 9091
