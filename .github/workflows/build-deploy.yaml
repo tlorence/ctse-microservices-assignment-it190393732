@@ -3,7 +3,11 @@ name: CTSE-Microservices-CI/CD-Pipeline
 on:
   push:
     branches: [ main ]
-#  workflow_dispatch:
+
+env:
+  PROJECT_ID: ${{ secrets.PROJECT_ID }}
+  GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
+  GKE_ZONE: ${{ secrets.GKE_ZONE }}
 
 jobs:
   build:
@@ -26,4 +30,19 @@ jobs:
       run: docker build . --file Dockerfile --tag tironelorence/spring-boot-docker
     - name: Pushing Docker Image to Docker Hub
       run: docker push tironelorence/spring-boot-docker
+
+  Deploy:
+    need: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: kubectl - Google Cloud GKE Cluster
+        uses: ameydev/gke-kubectl-action@master
+        env:
+          PROJECT_ID: ${{ env.PROJECT_ID }}
+          APPLICATION_CREDENTIALS: ${{ secrets.GKE_SA_KEY }}
+          CLUSTER_NAME: ${{ env.GKE_CLUSTER }}
+          ZONE_NAME: ${{ env.GKE_ZONE }}
+        with:
+          args: apply -f k8s/
 
