@@ -17,4 +17,5 @@ jobs:
         java-version: '1.8'
     - name: Building Project
       run: mvn clean install
-#      run: docker build . --file Dockerfile --tag tironelorence/spring-boot-docker:latest
+    - name: Building Docker Image
+      run: docker build . --file Dockerfile --tag tironelorence/spring-boot-docker
