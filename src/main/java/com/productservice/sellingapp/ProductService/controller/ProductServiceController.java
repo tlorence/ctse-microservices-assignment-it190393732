@@ -19,6 +19,6 @@ public class ProductServiceController {
 
     @GetMapping("/get")
     public String getData(){
-        return "Hey Bro";
+        return "Hey Sis";
     }
 }
