@@ -16,4 +16,9 @@ public class ProductServiceController {
     public Product addProduct(@RequestBody Product product){
       return productService.addProduct(product);
     }
+
+    @GetMapping("/get")
+    public String getData(){
+        return "Hey Bro";
+    }
 }
