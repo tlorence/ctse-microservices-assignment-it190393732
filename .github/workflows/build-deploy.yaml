@@ -32,7 +32,7 @@ jobs:
       run: docker push tironelorence/spring-boot-docker
 
   Deploy:
-    need: build
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
