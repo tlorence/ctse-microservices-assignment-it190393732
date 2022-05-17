@@ -30,7 +30,7 @@ jobs:
     - name: Building Docker Image
       run: docker build . --file Dockerfile --tag tironelorence/spring-boot-docker:1.0
     - name: Pushing Docker Image to Docker Hub
-      run: docker push --tag tironelorence/spring-boot-docker:1.0
+      run: docker push tironelorence/spring-boot-docker:1.0
 
     - id: "auth"
       uses: google-github-actions/auth@v0
