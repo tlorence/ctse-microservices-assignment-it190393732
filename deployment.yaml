@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: spring-boot-docker
-        image: tironelorence/spring-boot-docker:1.0
+        image: tironelorence/spring-boot-docker:1.1
         ports:
           - containerPort: 8080
