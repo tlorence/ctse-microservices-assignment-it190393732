@@ -16,6 +16,9 @@ spec:
     spec:
       containers:
       - name: spring-boot-docker
+
+#The tag of the image also should be incremented and consistent with the tag version in the build-deploy.yaml file
+
         image: tironelorence/spring-boot-docker:1.1
         ports:
           - containerPort: 8080
